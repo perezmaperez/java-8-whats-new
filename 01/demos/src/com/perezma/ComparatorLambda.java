@@ -6,7 +6,7 @@ import java.util.*;
  * This class uses a Lambda expression uses the Comparator functional interface to compare two Strings.
  */
 public class ComparatorLambda {
-    public static void main(String[] args) {
+    public static void main(String... args) {
 
         // anonymous class
         Comparator<String> compAnon = new Comparator<String>() {
