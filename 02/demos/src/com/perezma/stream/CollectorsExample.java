@@ -9,6 +9,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * This class also works with a reduction, but rather than aggregating elements,
+ * this reduction puts them in a container via the Stream collect operation.
+ * The Stream collect operation collects the elements into a String, List, or Map.
+ * You can also provide a downstream, secondary collector on the collector,
+ * which functions as a post-processor on the original collection.
+ */
 public class CollectorsExample {
 
     public static void main(String[] args) {
