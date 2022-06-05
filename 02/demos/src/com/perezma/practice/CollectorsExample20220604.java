@@ -120,5 +120,43 @@ public class CollectorsExample20220604 {
                         ));
         System.out.println(mapNames);
 
+        // Step 9: Let's interrogate the stream using a downstream collector.
+        //         Build a HashMap of names of people in alphabetical order (TreeSet) grouped by their age.
+        //         You get the names by using the downstream collector Collectors.mapping().
+        //         The collect operation returns a Map where the key = the grouping by Age
+        //         and the value is a set of names in alphabetical order.
+        //         In this case, the result is a Map<Integer, Set<String>>.
+        //         Print out the Map to see the results.
+        System.out.println("Build a HashMap of names of people in alphabetical order grouped by their age.");
+
+        Map<Integer, Set<String>> mapAlphaNames =
+                persons.stream()
+                        .collect(Collectors.groupingBy(
+                                Person::getAge,
+                                Collectors.mapping(
+                                        Person::getName,Collectors.toCollection(TreeSet::new)
+                                )
+                        ));
+        System.out.println(mapAlphaNames);
+
+        // Step 10: Let's interrogate the stream using a downstream collector.
+        //         Build a HashMap of names of people in a comma-separated String grouped by their age.
+        //         You get the names by using the downstream collector Collectors.mapping().
+        //         The collect operation returns a Map where the key = the grouping by Age
+        //         and the value is a set of names in alphabetical order.
+        //         In this case, the result is a Map<Integer, String>.
+        //         Print out the Map to see the results.
+        System.out.println("Build a HashMap of names of people in a comma-separated String grouped by their age.");
+
+        Map<Integer, String> mapCommaSepNames =
+                persons.stream()
+                        .collect(Collectors.groupingBy(
+                                Person::getAge,
+                                Collectors.mapping(
+                                        Person::getName,Collectors.joining(", ")
+                                )
+                        ));
+        System.out.println(mapCommaSepNames);
+
     }
 }
